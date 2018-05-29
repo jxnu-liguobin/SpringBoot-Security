@@ -42,9 +42,14 @@
 			<groupId>com.github.tomakehurst</groupId>
 			<artifactId>wiremock</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<!-- 打包插件 -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
