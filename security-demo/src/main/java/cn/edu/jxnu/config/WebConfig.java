@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import cn.edu.jxnu.web.filter.TimeFilter;
-import cn.edu.jxnu.web.interceptor.TimeInterceptor;
+import cn.edu.jxnu.web.timer.TimeFilter;
+import cn.edu.jxnu.web.timer.TimeInterceptor;
 
 /**
  * 自定义MVC配置
+ * 
+ * 用于注册第三方的过滤器
  * 
  * @author 梦境迷离.
  * @time 2018年5月29日
@@ -22,15 +24,18 @@ import cn.edu.jxnu.web.interceptor.TimeInterceptor;
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
 
+	// 拦截器注入，不实用
 	@SuppressWarnings("unused")
 	@Autowired
 	private TimeInterceptor timeInterceptor;
 
+	// 拦截器，关闭
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// registry.addInterceptor(timeInterceptor);
 	}
 
+	// 过滤器，关闭
 	// @Bean
 	public FilterRegistrationBean timeFilter() {
 
@@ -43,5 +48,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return registrationBean;
 
 	}
+	
+	//异步支持
+	// @Override
+	// public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+	// super.configureAsyncSupport(configurer);
+	// }
 
 }

@@ -110,6 +110,7 @@ public class UserController {
 		return users;
 	}
 
+	// @ApiParam指定用户id的参数名
 	@GetMapping("/{id:\\d+}")
 	@JsonView(User.UserDetailView.class)
 	public User getInfo(@ApiParam("用户id") @PathVariable String id) {

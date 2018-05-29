@@ -13,6 +13,7 @@ public class UserQueryCondition {
 
 	private String username;
 
+	// swagger属性名描述
 	@ApiModelProperty(value = "用户年龄起始值")
 	private int age;
 	@ApiModelProperty(value = "用户年龄终止值")

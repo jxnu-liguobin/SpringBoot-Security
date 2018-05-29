@@ -1,4 +1,4 @@
-package cn.edu.jxnu.web.interceptor;
+package cn.edu.jxnu.web.timer;
 
 import java.util.Date;
 
@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 时间拦截器
  * 
+ * 实现拦截Restful API的第二种方法
+ * 
  * @author 梦境迷离.
  * @time 2018年5月29日
  * @version v1.0
@@ -23,13 +25,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TimeInterceptor implements HandlerInterceptor {
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * 这种方法可以获取的控制器的请求方法信息
 	 * 
-	 * @see
-	 * org.springframework.web.servlet.HandlerInterceptor#preHandle(javax.servlet.
-	 * http.HttpServletRequest, javax.servlet.http.HttpServletResponse,
-	 * java.lang.Object)
+	 * 注意，拦截器此时并不知道User对象，request中的的对象转化为User对象这个还没有开始 即request携带的数据
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -38,19 +37,10 @@ public class TimeInterceptor implements HandlerInterceptor {
 
 		log.info(((HandlerMethod) handler).getBean().getClass().getName());
 		log.info(((HandlerMethod) handler).getMethod().getName());
-
 		request.setAttribute("startTime", new Date().getTime());
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.HandlerInterceptor#postHandle(javax.servlet.
-	 * http.HttpServletRequest, javax.servlet.http.HttpServletResponse,
-	 * java.lang.Object, org.springframework.web.servlet.ModelAndView)
-	 */
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
@@ -60,14 +50,6 @@ public class TimeInterceptor implements HandlerInterceptor {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.HandlerInterceptor#afterCompletion(javax.
-	 * servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse,
-	 * java.lang.Object, java.lang.Exception)
-	 */
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {

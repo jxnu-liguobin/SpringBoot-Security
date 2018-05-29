@@ -27,7 +27,7 @@ public class MockServer {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-		configureFor(8062);
+		configureFor(8080); // 默认
 		removeAllMappings();
 
 		mock("/order/1", "01");

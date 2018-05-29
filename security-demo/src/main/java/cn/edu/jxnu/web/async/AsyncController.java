@@ -9,7 +9,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 异步
+ * 模拟异步
  * 
  * @author 梦境迷离.
  * @time 2018年5月29日
@@ -31,13 +31,10 @@ public class AsyncController {
 
 		String orderNumber = RandomStringUtils.randomNumeric(8);
 		mockQueue.setPlaceOrder(orderNumber);
-
 		DeferredResult<String> result = new DeferredResult<>();
+		// 放假map中，任务结果
 		deferredResultHolder.getMap().put(orderNumber, result);
-
 		return result;
-
-		// Callable<String> result = new Callable<String>() {
 		// @Override
 		// public String call() throws Exception {
 		// logger.info("副线程开始");

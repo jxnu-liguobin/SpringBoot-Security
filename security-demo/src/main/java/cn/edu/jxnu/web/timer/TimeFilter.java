@@ -1,4 +1,4 @@
-package cn.edu.jxnu.web.filter;
+package cn.edu.jxnu.web.timer;
 
 import java.io.IOException;
 import java.util.Date;
@@ -13,31 +13,25 @@ import javax.servlet.ServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 实现拦截Restful API的第一种方法
+ * 
  * 时间过滤器
  * 
  * @author 梦境迷离.
  * @time 2018年5月29日
  * @version v1.0
  */
-// @Component
+// @Component 模拟第三方过滤器，没有spring注解
 @Slf4j
 public class TimeFilter implements Filter {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.servlet.Filter#destroy()
-	 */
 	@Override
 	public void destroy() {
 		log.info("time filter destroy");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest,
-	 * javax.servlet.ServletResponse, javax.servlet.FilterChain)
+	/**
+	 * 这种方法只能拿到HTTP请求，不知道请求控制器是谁
 	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -49,11 +43,6 @@ public class TimeFilter implements Filter {
 		log.info("time filter finish");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
-	 */
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		log.info("time filter init");

@@ -40,10 +40,8 @@ public class FileController {
 
 		try (InputStream inputStream = new FileInputStream(new File(folder, id + ".txt"));
 				OutputStream outputStream = response.getOutputStream();) {
-
 			response.setContentType("application/x-download");
 			response.addHeader("Content-Disposition", "attachment;filename=test.txt");
-
 			IOUtils.copy(inputStream, outputStream);
 			outputStream.flush();
 		}
@@ -58,9 +56,7 @@ public class FileController {
 		log.info(String.valueOf(file.getSize()));
 
 		File localFile = new File(folder, new Date().getTime() + ".txt");
-
 		file.transferTo(localFile);
-
 		return new FileInfo(localFile.getAbsolutePath());
 	}
 
