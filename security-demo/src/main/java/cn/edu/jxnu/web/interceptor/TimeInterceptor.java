@@ -10,7 +10,17 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 时间拦截器
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
+ */
 @Component
+@Slf4j
 public class TimeInterceptor implements HandlerInterceptor {
 
 	/*
@@ -24,10 +34,10 @@ public class TimeInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("preHandle");
+		log.info("preHandle");
 
-		System.out.println(((HandlerMethod) handler).getBean().getClass().getName());
-		System.out.println(((HandlerMethod) handler).getMethod().getName());
+		log.info(((HandlerMethod) handler).getBean().getClass().getName());
+		log.info(((HandlerMethod) handler).getMethod().getName());
 
 		request.setAttribute("startTime", new Date().getTime());
 		return true;
@@ -44,9 +54,9 @@ public class TimeInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("postHandle");
+		log.info("postHandle");
 		Long start = (Long) request.getAttribute("startTime");
-		System.out.println("time interceptor 耗时:" + (new Date().getTime() - start));
+		log.info("time interceptor 耗时:" + (new Date().getTime() - start));
 
 	}
 
@@ -61,10 +71,10 @@ public class TimeInterceptor implements HandlerInterceptor {
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("afterCompletion");
+		log.info("afterCompletion");
 		Long start = (Long) request.getAttribute("startTime");
-		System.out.println("time interceptor 耗时:" + (new Date().getTime() - start));
-		System.out.println("ex is " + ex);
+		log.info("time interceptor 耗时:" + (new Date().getTime() - start));
+		log.info("ex is " + ex);
 
 	}
 

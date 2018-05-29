@@ -2,6 +2,10 @@ package cn.edu.jxnu.exception;
 
 /**
  * 用户异常
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 public class UserNotExistException extends RuntimeException {
 

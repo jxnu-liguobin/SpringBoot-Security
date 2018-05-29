@@ -21,7 +21,11 @@ import cn.edu.jxnu.dto.FileInfo;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 文件
+ * 文件控制器
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 @RestController
 @RequestMapping("/file")

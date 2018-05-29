@@ -10,7 +10,17 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-//@Component
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 时间过滤器
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
+ */
+// @Component
+@Slf4j
 public class TimeFilter implements Filter {
 
 	/*
@@ -20,7 +30,7 @@ public class TimeFilter implements Filter {
 	 */
 	@Override
 	public void destroy() {
-		System.out.println("time filter destroy");
+		log.info("time filter destroy");
 	}
 
 	/*
@@ -32,11 +42,11 @@ public class TimeFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("time filter start");
+		log.info("time filter start");
 		long start = new Date().getTime();
 		chain.doFilter(request, response);
-		System.out.println("time filter 耗时:" + (new Date().getTime() - start));
-		System.out.println("time filter finish");
+		log.info("time filter 耗时:" + (new Date().getTime() - start));
+		log.info("time filter finish");
 	}
 
 	/*
@@ -46,7 +56,7 @@ public class TimeFilter implements Filter {
 	 */
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		System.out.println("time filter init");
+		log.info("time filter init");
 	}
 
 }

@@ -1,4 +1,4 @@
-package cn.edu.jxnu.web.config;
+package cn.edu.jxnu.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,10 @@ import cn.edu.jxnu.web.interceptor.TimeInterceptor;
 
 /**
  * 自定义MVC配置
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {

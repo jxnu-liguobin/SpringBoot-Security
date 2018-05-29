@@ -9,7 +9,11 @@ import cn.edu.jxnu.service.HelloService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 自定义注解处理
  * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 @Slf4j
 public class MyConstraintValidator implements ConstraintValidator<MyConstraint, Object> {

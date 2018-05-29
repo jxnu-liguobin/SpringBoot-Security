@@ -10,6 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 异步
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 @Slf4j
 @RestController

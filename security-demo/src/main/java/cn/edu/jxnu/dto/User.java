@@ -13,6 +13,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 用户信息
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 public class User {
 

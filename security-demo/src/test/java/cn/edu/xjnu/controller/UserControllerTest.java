@@ -26,8 +26,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import cn.edu.jxnu.DemoApplication;
 
+
 /**
- *
+ * 单元测试
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = DemoApplication.class)
@@ -46,22 +47,31 @@ public class UserControllerTest {
 	@Test
 	public void whenUploadSuccess() throws Exception {
 		String result = mockMvc
-				.perform(fileUpload("/file").file(new MockMultipartFile("file", "test.txt", "multipart/form-data",
-						"hello upload".getBytes("UTF-8"))))
-				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+				.perform(fileUpload("/file")
+				.file(new MockMultipartFile("file", "test.txt", "multipart/form-data","hello upload".getBytes("UTF-8"))))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
 		System.out.println(result);
 	}
 
 	@Test
 	public void whenQuerySuccess() throws Exception {
 		String result = mockMvc
-				.perform(get("/user").param("username", "jojo").param("age", "18").param("ageTo", "60")
-						.param("xxx", "yyy")
-						// .param("size", "15")
-						// .param("page", "3")
-						// .param("sort", "age,desc")
-						.contentType(MediaType.APPLICATION_JSON_UTF8))
-				.andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(3)).andReturn().getResponse()
+				.perform(get("/user")
+				.param("username", "jojo")
+				.param("age", "18")
+				.param("ageTo", "60")
+				.param("xxx", "yyy")
+				// .param("size", "15")
+				// .param("page", "3")
+				// .param("sort", "age,desc")
+				.contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.length()").value(3))
+				.andReturn()
+				.getResponse()
 				.getContentAsString();
 
 		System.out.println(result);
@@ -70,7 +80,10 @@ public class UserControllerTest {
 	@Test
 	public void whenGetInfoSuccess() throws Exception {
 		String result = mockMvc.perform(get("/user/1").contentType(MediaType.APPLICATION_JSON_UTF8))
-				.andExpect(status().isOk()).andExpect(jsonPath("$.username").value("tom")).andReturn().getResponse()
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.username").value("tom"))
+				.andReturn()
+				.getResponse()
 				.getContentAsString();
 
 		System.out.println(result);
@@ -78,8 +91,10 @@ public class UserControllerTest {
 
 	@Test
 	public void whenGetInfoFail() throws Exception {
-		mockMvc.perform(get("/user/a").contentType(MediaType.APPLICATION_JSON_UTF8))
-				.andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/user/a")
+				.contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(status()
+				.is4xxClientError());
 	}
 
 	@Test
@@ -88,8 +103,13 @@ public class UserControllerTest {
 		Date date = new Date();
 		System.out.println(date.getTime());
 		String content = "{\"username\":\"tom\",\"password\":null,\"birthday\":" + date.getTime() + "}";
-		String reuslt = mockMvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON_UTF8).content(content))
-				.andExpect(status().isOk()).andExpect(jsonPath("$.id").value("1")).andReturn().getResponse()
+		String reuslt = mockMvc.perform(post("/user")
+				.contentType(MediaType.APPLICATION_JSON_UTF8)
+				.content(content))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.id").value("1"))
+				.andReturn()
+				.getResponse()
 				.getContentAsString();
 
 		System.out.println(reuslt);
@@ -101,7 +121,9 @@ public class UserControllerTest {
 		Date date = new Date();
 		System.out.println(date.getTime());
 		String content = "{\"username\":\"tom\",\"password\":null,\"birthday\":" + date.getTime() + "}";
-		String reuslt = mockMvc.perform(post("/user").contentType(MediaType.APPLICATION_JSON_UTF8).content(content))
+		String reuslt = mockMvc.perform(post("/user").
+				contentType(MediaType.APPLICATION_JSON_UTF8)
+				.content(content))
 				// .andExpect(status().isOk())
 				// .andExpect(jsonPath("$.id").value("1"))
 				.andReturn().getResponse().getContentAsString();
@@ -113,11 +135,20 @@ public class UserControllerTest {
 	public void whenUpdateSuccess() throws Exception {
 
 		Date date = new Date(
-				LocalDateTime.now().plusYears(1).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+				LocalDateTime.now()
+				.plusYears(1)
+				.atZone(ZoneId.systemDefault())
+				.toInstant()
+				.toEpochMilli());
 		System.out.println(date.getTime());
 		String content = "{\"id\":\"1\", \"username\":\"tom\",\"password\":null,\"birthday\":" + date.getTime() + "}";
-		String reuslt = mockMvc.perform(put("/user/1").contentType(MediaType.APPLICATION_JSON_UTF8).content(content))
-				.andExpect(status().isOk()).andExpect(jsonPath("$.id").value("1")).andReturn().getResponse()
+		String reuslt = mockMvc.perform(put("/user/1")
+				.contentType(MediaType.APPLICATION_JSON_UTF8)
+				.content(content))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.id").value("1"))
+				.andReturn()
+				.getResponse()
 				.getContentAsString();
 
 		System.out.println(reuslt);

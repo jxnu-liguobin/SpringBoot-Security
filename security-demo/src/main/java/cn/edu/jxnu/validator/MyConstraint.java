@@ -9,7 +9,11 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * 自定义注解枚
+ * 自定义注解
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)

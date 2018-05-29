@@ -1,4 +1,4 @@
-package cn.edu.jxnu.web.controller;
+package cn.edu.jxnu.exception;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import cn.edu.jxnu.exception.UserNotExistException;
 
 /**
- * 异常建言
+ * 全局异常处理建言
+ * 
+ * @author 梦境迷离.
+ * @time 2018年5月29日
+ * @version v1.0
  */
 @ControllerAdvice
 public class ControllerExceptionHandler {
