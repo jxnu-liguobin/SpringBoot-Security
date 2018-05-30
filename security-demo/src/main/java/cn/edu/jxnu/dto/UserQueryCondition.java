@@ -1,6 +1,8 @@
 package cn.edu.jxnu.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 用户查询条件
@@ -9,6 +11,8 @@ import io.swagger.annotations.ApiModelProperty;
  * @time 2018年5月29日
  * @version v1.0
  */
+@Getter
+@Setter
 public class UserQueryCondition {
 
 	private String username;
@@ -20,38 +24,6 @@ public class UserQueryCondition {
 	private int ageTo;
 
 	private String xxx;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public int getAgeTo() {
-		return ageTo;
-	}
-
-	public void setAgeTo(int ageTo) {
-		this.ageTo = ageTo;
-	}
-
-	public String getXxx() {
-		return xxx;
-	}
-
-	public void setXxx(String xxx) {
-		this.xxx = xxx;
-	}
 
 	@Override
 	public String toString() {

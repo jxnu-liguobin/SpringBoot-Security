@@ -1,5 +1,8 @@
 package cn.edu.jxnu.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 文件信息
  * 
@@ -7,6 +10,8 @@ package cn.edu.jxnu.dto;
  * @time 2018年5月29日
  * @version v1.0
  */
+@Getter
+@Setter
 public class FileInfo {
 
 	public FileInfo(String path) {
@@ -14,14 +19,6 @@ public class FileInfo {
 	}
 
 	private String path;
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
 
 	@Override
 	public String toString() {

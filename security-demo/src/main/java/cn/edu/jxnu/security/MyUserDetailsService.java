@@ -14,7 +14,11 @@ import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 自定义用户认证逻辑
  * 
+ * @author 梦境迷离.
+ * @time 2018年5月30日
+ * @version v1.0
  */
 @Component
 @Slf4j

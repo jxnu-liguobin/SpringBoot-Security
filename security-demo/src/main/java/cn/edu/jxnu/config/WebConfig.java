@@ -48,8 +48,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return registrationBean;
 
 	}
-	
-	//异步支持
+
+	// 异步支持
 	// @Override
 	// public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
 	// super.configureAsyncSupport(configurer);
