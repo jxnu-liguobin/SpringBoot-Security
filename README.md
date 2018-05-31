@@ -2,4 +2,4 @@
 
 参考慕课 Spring Security 未完成
 
-忽略无关文件失效了，貌似需要重新构建git项目
+存在.project可以git本地库的方式导入Eclipse
