@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 核心模块配置
  * 
- * @author 梦境迷离.
+ * @author 梦境迷离
  * @time 2018年5月30日
  * @version v1.0
  */
