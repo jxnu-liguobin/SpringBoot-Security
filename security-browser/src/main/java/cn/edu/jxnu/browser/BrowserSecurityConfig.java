@@ -82,6 +82,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 		.and()
 		.and()
 		.authorizeRequests()
+		//DEFAULT_UNAUTHENTICATION_URL不可再拦截，否则会循环重定向
 		.antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
 						SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
 						securityProperties.getBrowser().getLoginPage(),
