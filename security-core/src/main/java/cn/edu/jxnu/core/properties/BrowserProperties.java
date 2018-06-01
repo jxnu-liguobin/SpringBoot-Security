@@ -14,6 +14,9 @@ public class BrowserProperties {
 
 	private SessionProperties session = new SessionProperties();
 
+	/**
+	 * 默认注册页面，由browser模块限定
+	 */
 	private String signUpUrl = "/imooc-signUp.html";
 
 	private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;

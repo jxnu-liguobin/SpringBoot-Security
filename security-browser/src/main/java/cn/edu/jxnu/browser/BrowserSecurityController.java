@@ -67,6 +67,7 @@ public class BrowserSecurityController {
 			String targetUrl = savedRequest.getRedirectUrl();
 			log.info("引发跳转的请求是:" + targetUrl);
 			if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
+				// 回来的时候，也是跳到这个地址
 				redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
 			}
 		}

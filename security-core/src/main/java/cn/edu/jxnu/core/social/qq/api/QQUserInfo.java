@@ -4,10 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * QQ用户信息的属性参数
+ * QQ用户信息封装
  * 
  * @author 梦境迷离.
- * @time 2018年5月30日
+ * @time 2018年6月1日
  * @version v1.0
  */
 @Setter

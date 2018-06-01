@@ -33,6 +33,11 @@ public class MyUserDetailsService implements UserDetailsService, SocialUserDetai
 		return buildUser(username);
 	}
 
+	/**
+	 * userId 是唯一标识，不一定是用户id
+	 * 
+	 * 社交登陆的时候用的，UserDetails的子接口
+	 */
 	@Override
 	public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
 		log.info("设计登录用户Id:" + userId);

@@ -18,8 +18,11 @@ import org.springframework.social.security.SpringSocialConfigurer;
 import cn.edu.jxnu.core.properties.SecurityProperties;
 
 /**
- * @author zhailiang
- *
+ * 社交配置
+ * 
+ * @author 梦境迷离.
+ * @time 2018年6月1日
+ * @version v1.0
  */
 @Configuration
 @EnableSocial
@@ -30,24 +33,32 @@ public class SocialConfig extends SocialConfigurerAdapter {
 
 	@Autowired
 	private SecurityProperties securityProperties;
-	
+
 	@Autowired(required = false)
 	private ConnectionSignUp connectionSignUp;
 
+	/**
+	 * UsersConnectionRepository配置
+	 */
 	@Override
 	public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
 		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource,
-				connectionFactoryLocator, Encryptors.noOpText());
-		repository.setTablePrefix("imooc_");
-		if(connectionSignUp != null) {
+				connectionFactoryLocator, Encryptors.noOpText()); // 原样存，不进行额外操作
+		repository.setTablePrefix("imooc_");// 设置表的前缀
+		if (connectionSignUp != null) {
 			repository.setConnectionSignUp(connectionSignUp);
 		}
 		return repository;
 	}
 
+	/**
+	 * 
+	 * 配置社交
+	 */
 	@Bean
 	public SpringSocialConfigurer imoocSocialSecurityConfig() {
 		String filterProcessesUrl = securityProperties.getSocial().getFilterProcessesUrl();
+		// 可配置的自定义的configurer
 		ImoocSpringSocialConfigurer configurer = new ImoocSpringSocialConfigurer(filterProcessesUrl);
 		configurer.signupUrl(securityProperties.getBrowser().getSignUpUrl());
 		return configurer;

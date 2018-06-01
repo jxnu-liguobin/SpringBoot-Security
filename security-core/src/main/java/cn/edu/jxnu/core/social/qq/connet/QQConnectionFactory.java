@@ -5,8 +5,13 @@ import org.springframework.social.connect.support.OAuth2ConnectionFactory;
 import cn.edu.jxnu.core.social.qq.api.QQ;
 
 /**
- * @author zhailiang
- *
+ * QQ的ConnectionFactory实现
+ * 
+ * 传入服务提供者和API适配器
+ * 
+ * @author 梦境迷离
+ * @time 2018年6月1日
+ * @version v1.0
  */
 public class QQConnectionFactory extends OAuth2ConnectionFactory<QQ> {
 

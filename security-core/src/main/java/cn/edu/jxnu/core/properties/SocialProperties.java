@@ -14,6 +14,7 @@ import lombok.Setter;
 @Getter
 public class SocialProperties {
 
+	// 默认是auth/qq，可配置的请求路径
 	private String filterProcessesUrl = "/auth";
 
 	private QQProperties qq = new QQProperties();

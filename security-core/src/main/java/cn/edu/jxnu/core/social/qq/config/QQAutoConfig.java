@@ -11,23 +11,20 @@ import cn.edu.jxnu.core.properties.SecurityProperties;
 import cn.edu.jxnu.core.social.qq.connet.QQConnectionFactory;
 
 /**
- * @author zhailiang
- *
+ * 注入QQ配置
+ * 
+ * @author 梦境迷离.
+ * @time 2018年6月1日
+ * @version v1.0
  */
 @Configuration
+// app-id有值，下面的配置才生效
 @ConditionalOnProperty(prefix = "imooc.security.social.qq", name = "app-id")
 public class QQAutoConfig extends SocialAutoConfigurerAdapter {
 
 	@Autowired
 	private SecurityProperties securityProperties;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.boot.autoconfigure.social.SocialAutoConfigurerAdapter
-	 * #createConnectionFactory()
-	 */
 	@Override
 	protected ConnectionFactory<?> createConnectionFactory() {
 		QQProperties qqConfig = securityProperties.getSocial().getQq();

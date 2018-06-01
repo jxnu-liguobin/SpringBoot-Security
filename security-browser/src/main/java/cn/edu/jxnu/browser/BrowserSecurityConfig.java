@@ -46,6 +46,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 	@Autowired
 	private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
+	/**
+	 * 将社交配置添加到过滤器链上
+	 */
 	@Autowired
 	private SpringSocialConfigurer imoocSocialSecurityConfig;
 
