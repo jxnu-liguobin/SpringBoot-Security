@@ -75,9 +75,13 @@ public class BrowserSecurityController {
 		return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
 	}
 
+	/**
+	 * 获取社交用户信息
+	 */
 	@GetMapping("/social/user")
 	public SocialUserInfo getSocialUserInfo(HttpServletRequest request) {
 		SocialUserInfo userInfo = new SocialUserInfo();
+		// 拿到第三方用户信息
 		Connection<?> connection = providerSignInUtils.getConnectionFromSession(new ServletWebRequest(request));
 		userInfo.setProviderId(connection.getKey().getProviderId());
 		userInfo.setProviderUserId(connection.getKey().getProviderUserId());

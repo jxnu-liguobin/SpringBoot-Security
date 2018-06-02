@@ -8,19 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.view.AbstractView;
 
 /**
- * @author zhailiang
- *
+ * 实现自定义的绑定
+ * 
+ * 绑定成功的视图，可通用
+ * 
+ * @author 梦境迷离.
+ * @time 2018年6月1日
+ * @version v1.0
  */
 public class ImoocConnectView extends AbstractView {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.view.AbstractView#renderMergedOutputModel
-	 * (java.util.Map, javax.servlet.http.HttpServletRequest,
-	 * javax.servlet.http.HttpServletResponse)
-	 */
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

@@ -19,6 +19,7 @@ public class SocialProperties {
 
 	private QQProperties qq = new QQProperties();
 
+	// 把微信属性添加进来
 	private WeixinProperties weixin = new WeixinProperties();
 
 }

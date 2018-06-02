@@ -17,8 +17,9 @@ import cn.edu.jxnu.core.social.weixin.connet.WeixinConnectionFactory;
 /**
  * 微信登录配置
  * 
- * @author zhailiang
- *
+ * @author 梦境迷离.
+ * @time 2018年6月2日
+ * @version v1.0
  */
 @Configuration
 @ConditionalOnProperty(prefix = "imooc.security.social.weixin", name = "app-id")
@@ -27,24 +28,23 @@ public class WeixinAutoConfiguration extends SocialAutoConfigurerAdapter {
 	@Autowired
 	private SecurityProperties securityProperties;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.boot.autoconfigure.social.SocialAutoConfigurerAdapter
-	 * #createConnectionFactory()
-	 */
 	@Override
 	protected ConnectionFactory<?> createConnectionFactory() {
 		WeixinProperties weixinConfig = securityProperties.getSocial().getWeixin();
 		return new WeixinConnectionFactory(weixinConfig.getProviderId(), weixinConfig.getAppId(),
 				weixinConfig.getAppSecret());
 	}
-	
-	@Bean({"connect/weixinConnect", "connect/weixinConnected"})
-	@ConditionalOnMissingBean(name = "weixinConnectedView")
+
+	/**
+	 * 注册绑定视图
+	 * 
+	 * 绑定/解绑
+	 *
+	 */
+	@Bean({ "connect/weixinConnect", "connect/weixinConnected" })
+	@ConditionalOnMissingBean(name = "weixinConnectedView") // 只有没有weixinConnectedView的时候才会使用默认
 	public View weixinConnectedView() {
 		return new ImoocConnectView();
 	}
-	
+
 }

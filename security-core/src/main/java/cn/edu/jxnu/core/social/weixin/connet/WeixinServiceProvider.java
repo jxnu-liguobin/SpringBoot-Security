@@ -6,14 +6,14 @@ import cn.edu.jxnu.core.social.weixin.api.Weixin;
 import cn.edu.jxnu.core.social.weixin.api.WeixinImpl;
 
 /**
- * 
  * 微信的OAuth2流程处理器的提供器，供spring social的connect体系调用
  * 
- * @author zhailiang
- *
+ * @author 梦境迷离.
+ * @time 2018年6月2日
+ * @version v1.0
  */
 public class WeixinServiceProvider extends AbstractOAuth2ServiceProvider<Weixin> {
-	
+
 	/**
 	 * 微信获取授权码的url
 	 */
@@ -28,13 +28,9 @@ public class WeixinServiceProvider extends AbstractOAuth2ServiceProvider<Weixin>
 	 * @param appSecret
 	 */
 	public WeixinServiceProvider(String appId, String appSecret) {
-		super(new WeixinOAuth2Template(appId, appSecret,URL_AUTHORIZE,URL_ACCESS_TOKEN));
+		super(new WeixinOAuth2Template(appId, appSecret, URL_AUTHORIZE, URL_ACCESS_TOKEN));
 	}
 
-
-	/* (non-Javadoc)
-	 * @see org.springframework.social.oauth2.AbstractOAuth2ServiceProvider#getApi(java.lang.String)
-	 */
 	@Override
 	public Weixin getApi(String accessToken) {
 		return new WeixinImpl(accessToken);

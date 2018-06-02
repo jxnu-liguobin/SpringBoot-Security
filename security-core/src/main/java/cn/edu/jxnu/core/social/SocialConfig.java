@@ -46,6 +46,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
 				connectionFactoryLocator, Encryptors.noOpText()); // 原样存，不进行额外操作
 		repository.setTablePrefix("imooc_");// 设置表的前缀
 		if (connectionSignUp != null) {
+			// 如果用户有提供这个，则默认为QQ登陆的用户，自动注册为本站用户
 			repository.setConnectionSignUp(connectionSignUp);
 		}
 		return repository;
@@ -64,6 +65,11 @@ public class SocialConfig extends SocialConfigurerAdapter {
 		return configurer;
 	}
 
+	/**
+	 * 工具类
+	 * 
+	 * 返回给用户
+	 */
 	@Bean
 	public ProviderSignInUtils providerSignInUtils(ConnectionFactoryLocator connectionFactoryLocator) {
 		return new ProviderSignInUtils(connectionFactoryLocator,
