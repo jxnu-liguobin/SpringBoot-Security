@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -17,10 +15,18 @@ import org.springframework.util.Assert;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cn.edu.jxnu.browser.support.SimpleResponse;
+import lombok.extern.slf4j.Slf4j;
 
+/**
+ * session跳转策略
+ * 
+ * @author 梦境迷离.
+ * @time 2018年6月4日
+ * @version v1.0
+ */
+@Slf4j
 public class AbstractSessionStrategy {
 
-	private final Logger logger = LoggerFactory.getLogger(getClass());
 	/**
 	 * 跳转的url
 	 */
@@ -45,25 +51,16 @@ public class AbstractSessionStrategy {
 		this.destinationUrl = invalidSessionUrl;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.security.web.session.InvalidSessionStrategy#
-	 * onInvalidSessionDetected(javax.servlet.http.HttpServletRequest,
-	 * javax.servlet.http.HttpServletResponse)
-	 */
 	protected void onSessionInvalid(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		if (createNewSession) {
 			request.getSession();
 		}
-
 		String sourceUrl = request.getRequestURI();
 		String targetUrl;
-
 		if (StringUtils.endsWithIgnoreCase(sourceUrl, ".html")) {
 			targetUrl = destinationUrl + ".html";
-			logger.info("session失效,跳转到" + targetUrl);
+			log.info("session失效,跳转到" + targetUrl);
 			redirectStrategy.sendRedirect(request, response, targetUrl);
 		} else {
 			String message = "session已失效";
@@ -86,15 +83,6 @@ public class AbstractSessionStrategy {
 		return false;
 	}
 
-	/**
-	 * Determines whether a new session should be created before redirecting (to
-	 * avoid possible looping issues where the same session ID is sent with the
-	 * redirected request). Alternatively, ensure that the configured URL does not
-	 * pass through the {@code SessionManagementFilter}.
-	 *
-	 * @param createNewSession
-	 *            defaults to {@code true}.
-	 */
 	public void setCreateNewSession(boolean createNewSession) {
 		this.createNewSession = createNewSession;
 	}

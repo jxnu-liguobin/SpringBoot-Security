@@ -7,7 +7,7 @@ import lombok.Setter;
  * session属性参数
  * 
  * @author 梦境迷离.
- * @time 2018年5月30日
+ * @time 2018年6月4日
  * @version v1.0
  */
 @Setter

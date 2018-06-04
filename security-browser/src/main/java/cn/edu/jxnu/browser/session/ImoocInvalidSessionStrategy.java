@@ -8,6 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.web.session.InvalidSessionStrategy;
 
+/**
+ * session无效策略
+ * 
+ * @author 梦境迷离.
+ * @time 2018年6月4日
+ * @version v1.0
+ */
 public class ImoocInvalidSessionStrategy extends AbstractSessionStrategy implements InvalidSessionStrategy {
 
 	public ImoocInvalidSessionStrategy(String invalidSessionUrl) {

@@ -25,4 +25,9 @@ public class BrowserProperties {
 
 	private int rememberMeSeconds = 3600;
 
+	/**
+	 * 默认的退出登录后的页面
+	 */
+	private String signOutUrl;
+
 }
